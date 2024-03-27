@@ -1,12 +1,15 @@
 NAME = nickhasser/g10k
 #WEBHOOK_VERSION = 2.8.1
 #G10K_VERSION = v0.9.9
-IMAGE_VERSION = 0.0.1
+IMAGE_VERSION = 0.0.2
 
 default: build
 
 clean:
 	docker image rm $(NAME):$(IMAGE_VERSION)
+
+clean-latest:
+	docker image rm $(NAME)
 
 build:
 	docker build -t $(NAME):$(IMAGE_VERSION) .
