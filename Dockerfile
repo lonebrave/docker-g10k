@@ -29,5 +29,9 @@ LABEL org.label-schema.maintainer="Nicholas Hasser <nick.hasser@gmail.com>" \
       org.label-schema.dockerfile="/Dockerfile"
 RUN apk add --no-cache git openssh bash
 RUN mkdir /code
+# GID 999 = ping
+RUN adduser -u 999 -G ping -D puppet && \
+    chown -R puppet:ping /code
+USER puppet:puppet
 EXPOSE 9000
-ENTRYPOINT [ "/usr/local/bin/webhook" ]
+ENTRYPOINT [ "/usr/local/bin/webhook -hooks /var/webhook/hooks.json -verbose" ]
