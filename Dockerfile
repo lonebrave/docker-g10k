@@ -1,5 +1,5 @@
 # Build webhook
-FROM golang:1.22.1-alpine3.19 AS build-webhook
+FROM golang:1.23.1-alpine3.20 AS build-webhook
 ENV WEBHOOK_VERSION 2.8.1
 WORKDIR /go/src/github.com/adnanh/webhook
 RUN apk add --update --no-cache -t build-deps curl gcc libc-dev libgcc
@@ -9,7 +9,7 @@ RUN go get -d -v
 RUN CGO_ENABLED=0 go build -ldflags="-s -w" -o /usr/local/bin/webhook
 
 # Build g10k
-FROM golang:1.22.1-alpine3.19 AS build-g10k
+FROM golang:1.23.1-alpine3.20 AS build-g10k
 ENV G10K_VERSION v0.9.9
 WORKDIR /usr/src/g10k
 RUN apk add --update --no-cache -t build-deps curl gcc make musl-dev git openssh bash
@@ -18,7 +18,7 @@ RUN curl -L --silent -o g10k.tar.gz https://github.com/xorpaul/g10k/archive/refs
 RUN make g10k
 
 # g10k image w/ webhook
-FROM alpine:3.19.1
+FROM alpine:3.20.3
 COPY --from=build-g10k /usr/src/g10k/g10k /usr/bin/
 COPY --from=build-webhook /usr/local/bin/webhook /usr/local/bin/
 COPY Dockerfile /Dockerfile
