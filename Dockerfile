@@ -1,6 +1,6 @@
 # Build webhook
 FROM golang:1.23.1-alpine3.20 AS build-webhook
-ENV WEBHOOK_VERSION 2.8.1
+ENV WEBHOOK_VERSION 2.8.2
 WORKDIR /go/src/github.com/adnanh/webhook
 RUN apk add --update --no-cache -t build-deps curl gcc libc-dev libgcc
 RUN curl -L --silent -o webhook.tar.gz https://github.com/adnanh/webhook/archive/${WEBHOOK_VERSION}.tar.gz && \
