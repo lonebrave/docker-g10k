@@ -1,6 +1,6 @@
 # Changelog
 
-## next - YYYY-MM-DD
+## 0.0.3 - 2024-11-21
 
 ### Changed
 
