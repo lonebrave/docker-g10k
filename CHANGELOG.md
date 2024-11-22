@@ -1,5 +1,15 @@
 # Changelog
 
+## 0.0.4 - 2024-11-22
+
+### Added
+
+- Add 'help' Makefile target (['4be0ba5'](https://github.com/lonebrave/docker-g10k/commit/4be0ba5))
+
+### Fixed
+
+- Fix USER group configuration (['bc11a32'](https://github.com/lonebrave/docker-g10k/commit/bc11a32))
+
 ## 0.0.3 - 2024-11-21
 
 ### Changed
