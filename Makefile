@@ -1,7 +1,7 @@
 NAME = nickhasser/g10k
 #WEBHOOK_VERSION = 2.8.2
 #G10K_VERSION = v0.9.9
-IMAGE_VERSION = 0.0.4
+IMAGE_VERSION = 0.0.5
 
 help: ## Show this help.
 	@fgrep -h "##" $(MAKEFILE_LIST) | fgrep -v fgrep | sed -e 's/\\$$//' | sed -e 's/##//'
