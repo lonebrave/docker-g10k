@@ -1,6 +1,6 @@
 # Build webhook
 FROM golang:1.24.2-alpine3.21 AS build-webhook
-ENV WEBHOOK_VERSION 2.8.2
+ENV WEBHOOK_VERSION=2.8.2
 WORKDIR /go/src/github.com/adnanh/webhook
 RUN apk add --update --no-cache -t build-deps curl gcc libc-dev libgcc
 RUN curl -L --silent -o webhook.tar.gz https://github.com/adnanh/webhook/archive/${WEBHOOK_VERSION}.tar.gz && \
@@ -10,7 +10,7 @@ RUN CGO_ENABLED=0 go build -ldflags="-s -w" -o /usr/local/bin/webhook
 
 # Build g10k
 FROM golang:1.24.2-alpine3.21 AS build-g10k
-ENV G10K_VERSION v0.9.10
+ENV G10K_VERSION=v0.9.10
 WORKDIR /usr/src/g10k
 RUN apk add --update --no-cache -t build-deps curl gcc make musl-dev git openssh bash
 RUN curl -L --silent -o g10k.tar.gz https://github.com/xorpaul/g10k/archive/refs/tags/${G10K_VERSION}.tar.gz && \
